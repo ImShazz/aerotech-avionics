@@ -32,19 +32,19 @@ function Navbar() {
         >
           <div className="navbar-nav ms-auto">
             <a className="nav-link" href="/" onClick={cerrarMenu}>
-              Inicio
+              INICIO
             </a>
             <a className="nav-link" href="#productos" onClick={cerrarMenu}>
-              Productos
+              PRODUCTOS
             </a>
             <a className="nav-link" href="#categorias" onClick={cerrarMenu}>
-              Categorías
+              CATEGORIAS
             </a>
             <a className="nav-link" href="#carrito" onClick={cerrarMenu}>
-              Carrito
+              CARRITO
             </a>
             <a className="nav-link" href="#login" onClick={cerrarMenu}>
-              Iniciar sesión
+              INICIAR SESION
             </a>
           </div>
         </div>
