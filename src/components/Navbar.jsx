@@ -6,10 +6,23 @@ function Navbar() {
 
   const cerrarMenu = () => setMenuAbierto(false)
 
+  const enlaces = [
+    { nombre: 'INICIO', ruta: '#inicio' },
+    { nombre: 'NOSOTROS', ruta: '#nosotros' },
+    { nombre: 'SERVICIOS', ruta: '#servicios' },
+    { nombre: 'TECNOLOGÍAS', ruta: '#tecnologias' },
+    { nombre: 'PROYECTOS', ruta: '#proyectos' },
+    { nombre: 'CONTACTO', ruta: '#contacto' },
+    { nombre: 'ACCESO', ruta: '#acceso' },
+  ]
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark"
+      style={{ backgroundColor: 'var(--color-primary)' }}
+    >
       <div className="container">
-        <a className="navbar-brand fw-bold" href="/">
+        <a className="navbar-brand fw-bold" href="#inicio">
           AeroTech Avionics
         </a>
 
@@ -31,21 +44,16 @@ function Navbar() {
           }`}
         >
           <div className="navbar-nav ms-auto">
-            <a className="nav-link" href="/" onClick={cerrarMenu}>
-              INICIO
-            </a>
-            <a className="nav-link" href="#productos" onClick={cerrarMenu}>
-              PRODUCTOS
-            </a>
-            <a className="nav-link" href="#categorias" onClick={cerrarMenu}>
-              CATEGORIAS
-            </a>
-            <a className="nav-link" href="#carrito" onClick={cerrarMenu}>
-              CARRITO
-            </a>
-            <a className="nav-link" href="#login" onClick={cerrarMenu}>
-              INICIAR SESION
-            </a>
+            {enlaces.map((enlace) => (
+              <a
+                key={enlace.nombre}
+                className="nav-link"
+                href={enlace.ruta}
+                onClick={cerrarMenu}
+              >
+                {enlace.nombre}
+              </a>
+            ))}
           </div>
         </div>
       </div>
