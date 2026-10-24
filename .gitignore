@@ -27,3 +27,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Imagen temporal utilizada solo para desarrollo local
+/public/images/hero-avionica.jpg

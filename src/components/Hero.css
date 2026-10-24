@@ -1,0 +1,114 @@
+
+.hero {
+  min-height: 700px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(10, 22, 38, 0.9) 0%,
+      rgba(10, 22, 38, 0.65) 40%,
+      rgba(10, 22, 38, 0.1) 100%
+    ),
+    url('/images/hero-avionica.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+}
+
+.hero-contenido {
+  width: 100%;
+}
+
+.hero-texto {
+  max-width: 620px;
+}
+
+.hero-etiqueta {
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 24px 0;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  margin-bottom: 30px;
+}
+
+.hero-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.hero .btn.hero-boton {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  border: 2px solid var(--color-accent);
+  font-weight: 700;
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+}
+
+.hero .btn.hero-boton:hover {
+  background-color: #7dd3fc;
+  color: var(--color-primary);
+  border-color: #7dd3fc;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 600px;
+    padding: 70px 0;
+    background-position: 60% center;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+
+/* Botón secundario de la portada */
+
+.hero .btn.hero-boton-secundario {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  font-weight: 700;
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+}
+
+.hero .btn.hero-boton-secundario:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.hero .btn.hero-boton-secundario:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
