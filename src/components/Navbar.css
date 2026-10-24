@@ -1,0 +1,58 @@
+
+.navbar-aerotech {
+  background-color: var(--color-primary);
+  min-height: 76px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-right: 24px;
+}
+
+.logo-aa {
+  display: block;
+  width: 85px;
+  height: 56px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.navbar-logo:hover .logo-aa {
+  transform: scale(1.06);
+}
+
+.navbar-aerotech .nav-enlace {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 9px !important;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.navbar-aerotech .nav-enlace:hover {
+  color: var(--color-accent);
+}
+
+.navbar-aerotech .nav-acceso {
+  color: var(--color-accent);
+}
+
+.navbar-aerotech .nav-acceso:hover {
+  color: white;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-aerotech .nav-enlace {
+    padding: 12px 0 !important;
+  }
+
+  .navbar-aerotech .navbar-collapse {
+    padding-top: 14px;
+    padding-bottom: 10px;
+  }
+}
