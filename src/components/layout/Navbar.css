@@ -1,108 +1,144 @@
 
+/* =========================================
+   NAVBAR - AEROTECH AVIONICS
+========================================= */
+
 .navbar-aerotech {
   background-color: var(--color-primary);
   min-height: 76px;
+  width: 100%;
+  padding: 8px 0;
 }
+
+/* Logo */
 
 .navbar-logo {
   display: flex;
   align-items: center;
   padding: 0;
-  margin-right: 24px;
 }
 
 .logo-aa {
-  display: block;
   width: 85px;
   height: 56px;
   object-fit: contain;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s ease;
 }
 
 .navbar-logo:hover .logo-aa {
-  transform: scale(1.06);
+  transform: scale(1.05);
+}
+
+/* Enlaces */
+
+.navbar-aerotech .navbar-nav {
+  gap: 8px;
 }
 
 .navbar-aerotech .nav-enlace {
   display: flex;
   align-items: center;
   gap: 7px;
-  padding: 10px 9px !important;
+
+  color: #cbd5e1;
   font-size: 0.78rem;
   font-weight: 600;
-  white-space: nowrap;
-  transition: color 0.2s ease;
+  letter-spacing: 0.4px;
+
+  padding: 10px 12px;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease;
 }
 
-.navbar-aerotech .nav-enlace:hover {
+.navbar-aerotech .nav-enlace svg {
+  flex-shrink: 0;
+}
+
+.navbar-aerotech .nav-enlace:hover,
+.navbar-aerotech .nav-enlace.active {
   color: var(--color-accent);
 }
+
+/* Acceso */
 
 .navbar-aerotech .nav-acceso {
   color: var(--color-accent);
 }
 
-.navbar-aerotech .nav-acceso:hover {
-  color: white;
+/* Botón hamburguesa */
+
+.navbar-aerotech .navbar-toggler {
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-radius: 9px;
+  padding: 9px 12px;
+  box-shadow: none;
 }
 
+.navbar-aerotech .navbar-toggler:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   MENÚ MÓVIL ENCAPSULADO
+========================================= */
+
 @media (max-width: 991.98px) {
-  .navbar-aerotech .nav-enlace {
-    padding: 12px 0 !important;
-  }
 
   .navbar-aerotech .navbar-collapse {
-    padding-top: 14px;
-    padding-bottom: 10px;
-  }
-}
-
-
-/* Menú desplegable en dispositivos móviles */
-@media (max-width: 991.98px) {
-  .navbar-collapse {
     background-color: var(--color-secondary);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
-    padding: 0 14px;
+
+    padding: 12px 14px;
     margin-top: 12px;
+
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   }
 
-  /* Animación de los enlaces al abrir el menú */
-  .navbar-collapse.show .nav-link {
-    animation: aparecerEnlace 0.3s ease both;
+  .navbar-aerotech .navbar-nav {
+    gap: 3px;
+    align-items: stretch;
   }
 
-  .navbar-collapse.show .nav-item:nth-child(2) .nav-link {
-    animation-delay: 40ms;
-  }
-
-  .navbar-collapse.show .nav-item:nth-child(3) .nav-link {
-    animation-delay: 80ms;
-  }
-
-  .navbar-collapse.show .nav-item:nth-child(4) .nav-link {
-    animation-delay: 120ms;
-  }
-
-  .navbar-collapse.show .nav-item:nth-child(5) .nav-link {
-    animation-delay: 160ms;
-  }
-
-  .navbar-collapse.show .nav-item:nth-child(6) .nav-link {
-    animation-delay: 200ms;
-  }
-
-  .navbar-collapse .nav-link {
+  .navbar-aerotech .nav-enlace {
     padding: 13px 12px;
     border-radius: 8px;
   }
 
-  .navbar-collapse .nav-link:hover {
+  .navbar-aerotech .nav-enlace:hover {
     background-color: rgba(56, 189, 248, 0.1);
   }
+
+  /* Animación de entrada de los enlaces */
+
+  .navbar-aerotech .navbar-collapse.show .nav-enlace {
+    animation: aparecerEnlace 0.3s ease both;
+  }
+
+  .navbar-aerotech .navbar-collapse.show .nav-enlace:nth-child(2) {
+    animation-delay: 40ms;
+  }
+
+  .navbar-aerotech .navbar-collapse.show .nav-enlace:nth-child(3) {
+    animation-delay: 80ms;
+  }
+
+  .navbar-aerotech .navbar-collapse.show .nav-enlace:nth-child(4) {
+    animation-delay: 120ms;
+  }
+
+  .navbar-aerotech .navbar-collapse.show .nav-enlace:nth-child(5) {
+    animation-delay: 160ms;
+  }
+
+  .navbar-aerotech .navbar-collapse.show .nav-enlace:nth-child(6) {
+    animation-delay: 200ms;
+  }
 }
+
+/* Animación */
 
 @keyframes aparecerEnlace {
   from {
@@ -117,8 +153,12 @@
 }
 
 /* Accesibilidad */
+
 @media (prefers-reduced-motion: reduce) {
-  .navbar-collapse .nav-link {
+  .navbar-aerotech *,
+  .navbar-aerotech *::before,
+  .navbar-aerotech *::after {
     animation: none !important;
+    transition: none !important;
   }
 }

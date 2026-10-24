@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import { NavLink, Link } from 'react-router'
 import {
   Building2,
   Wrench,
@@ -17,21 +18,21 @@ function Navbar() {
   const cerrarMenu = () => setMenuAbierto(false)
 
   const enlaces = [
-    { nombre: 'NOSOTROS', ruta: '#nosotros', Icono: Building2 },
-    { nombre: 'SERVICIOS', ruta: '#servicios', Icono: Wrench },
-    { nombre: 'TECNOLOGIAS', ruta: '#tecnologias', Icono: Cpu },
-    { nombre: 'PROYECTOS', ruta: '#proyectos', Icono: FolderKanban },
-    { nombre: 'CONTACTO', ruta: '#contacto', Icono: Mail },
-    { nombre: 'ACCESO', ruta: '#acceso', Icono: UserRound }
+    { nombre: 'NOSOTROS', ruta: '/nosotros', Icono: Building2 },
+    { nombre: 'SERVICIOS', ruta: '/#servicios', Icono: Wrench },
+    { nombre: 'TECNOLOGIAS', ruta: '/#tecnologias', Icono: Cpu },
+    { nombre: 'PROYECTOS', ruta: '/#proyectos', Icono: FolderKanban },
+    { nombre: 'CONTACTO', ruta: '/#contacto', Icono: Mail },
+    { nombre: 'ACCESO', ruta: '/#acceso', Icono: UserRound }
   ]
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark navbar-aerotech">
       <div className="container">
 
-        <a
+        <Link
           className="navbar-brand navbar-logo"
-          href="#inicio"
+          to="/"
           onClick={cerrarMenu}
           aria-label="AeroTech Avionics - Ir al inicio"
         >
@@ -40,7 +41,7 @@ function Navbar() {
             alt="AeroTech Avionics"
             className="logo-aa"
           />
-        </a>
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -61,17 +62,28 @@ function Navbar() {
         >
           <div className="navbar-nav ms-auto align-items-lg-center">
             {enlaces.map(({ nombre, ruta, Icono }) => (
-              <a
+              <NavLink
                 key={nombre}
-                href={ruta}
-                className={`nav-link nav-enlace ${
-                  nombre === 'ACCESO' ? 'nav-acceso' : ''
-                }`}
+                to={ruta}
+                end
+                className={({ isActive }) =>
+                  `nav-link nav-enlace ${
+                    nombre === 'ACCESO' ? 'nav-acceso' : ''
+                  } ${
+                    isActive && !ruta.includes('#')
+                      ? 'active'
+                      : ''
+                  }`
+                }
                 onClick={cerrarMenu}
               >
-                <Icono size={17} strokeWidth={1.8} aria-hidden="true" />
+                <Icono
+                  size={17}
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
                 <span>{nombre}</span>
-              </a>
+              </NavLink>
             ))}
           </div>
         </div>
