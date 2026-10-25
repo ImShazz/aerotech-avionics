@@ -1,4 +1,4 @@
-
+;
 import { useEffect, useState } from 'react';
 
 const proyectosIniciales = [
@@ -24,7 +24,22 @@ function Proyectos() {
 
   return proyectosIniciales;
 });
-  
+
+  const [clientesDisponibles] = useState(() => {
+    const clientesGuardados = localStorage.getItem('aerotech-clientes');
+
+    if (clientesGuardados) {
+      try {
+        const datos = JSON.parse(clientesGuardados);
+        return Array.isArray(datos) ? datos : [];
+      } catch {
+        return [];
+      }
+    }
+
+    return [];
+  });
+
 useEffect(() => {
   localStorage.setItem('aerotech-proyectos', JSON.stringify(proyectos));
 }, [proyectos]);
@@ -134,19 +149,25 @@ const guardarProyecto = () => {
         <label htmlFor="nuevo-cliente" className="form-label">
           Empresa cliente
         </label>
-        <input
-          type="text"
-          id="nuevo-cliente"
-          className="form-control"
-          placeholder="Ej: AeroSur Ingeniería"
-          value={nuevoProyecto.cliente}
-          onChange={(e) =>
-            setNuevoProyecto({
-              ...nuevoProyecto,
-              cliente: e.target.value,
-            })
-          }
-        />
+        <select
+  id="nuevo-cliente"
+  className="form-select"
+  value={nuevoProyecto.cliente}
+  onChange={(e) =>
+    setNuevoProyecto({
+      ...nuevoProyecto,
+      cliente: e.target.value,
+    })
+  }
+>
+  <option value="">Selecciona una empresa</option>
+
+  {clientesDisponibles.map((cliente) => (
+    <option key={cliente.id} value={cliente.empresa}>
+      {cliente.empresa}
+    </option>
+  ))}
+</select>
       </div>
 
       <div className="mb-3">
