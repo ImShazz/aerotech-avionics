@@ -1,19 +1,27 @@
+
+import { Routes, Route } from 'react-router'
+
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
+
+import Home from './pages/Home/Home'
+import Nosotros from './pages/Nosotros/Nosotros'
+import Contacto from './pages/Contacto/Contacto'
+
 import './App.css'
-import Navbar from './components/Navbar'
 
 function App() {
   return (
     <>
       <Navbar />
 
-      <main className="container py-5">
-        <h1>Bienvenido a AeroTech Avionics</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/nosotros" element={<Nosotros />} />
+        <Route path="/contacto" element={<Contacto />} />
+      </Routes>
 
-        <p>
-          Tu tienda especializada en equipos electrónicos
-          para la industria aeronáutica.
-        </p>
-      </main>
+      <Footer />
     </>
   )
 }
