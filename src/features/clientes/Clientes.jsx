@@ -20,6 +20,7 @@ function Clientes() {
   const [busqueda, setBusqueda] = useState('');
   const [clientes, setClientes] = useState(clientesIniciales);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [clienteEditando, setClienteEditando] = useState(null);
   const [nuevoCliente, setNuevoCliente] = useState({
   empresa: '',
   contacto: '',
@@ -39,6 +40,20 @@ const guardarCliente = () => {
     return;
   }
 
+  if (clienteEditando !== null) {
+  setClientes((clientesActuales) =>
+    clientesActuales.map((cliente) =>
+      cliente.id === clienteEditando
+        ? {
+            ...cliente,
+            empresa: nuevoCliente.empresa.trim(),
+            contacto: nuevoCliente.contacto.trim(),
+            correo: nuevoCliente.correo.trim(),
+          }
+        : cliente
+    )
+  );
+} else {
   const clienteAgregado = {
     id: Date.now(),
     empresa: nuevoCliente.empresa.trim(),
@@ -51,6 +66,7 @@ const guardarCliente = () => {
     ...clientesActuales,
     clienteAgregado,
   ]);
+}
 
   setNuevoCliente({
     empresa: '',
@@ -174,6 +190,7 @@ const guardarCliente = () => {
         <th>Contacto</th>
         <th>Correo</th>
         <th>Estado</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -193,6 +210,23 @@ const guardarCliente = () => {
           {cliente.estado}
         </span>
       </td>
+      <td>
+  <button
+  type="button"
+  className="btn btn-warning btn-sm"
+  onClick={() => {
+    setClienteEditando(cliente.id);
+    setNuevoCliente({
+      empresa: cliente.empresa,
+      contacto: cliente.contacto,
+      correo: cliente.correo,
+    });
+    setMostrarFormulario(true);
+  }}
+>
+  Editar
+</button>
+</td>
     </tr>
   ))}
 </tbody>
