@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Home from './pages/Home/Home'
+import Nosotros from './pages/Nosotros/Nosotros'
 
 import './App.css'
 
@@ -14,15 +15,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path="/nosotros"
-          element={
-            <main className="container py-5">
-              <h1>Nosotros</h1>
-              <p>Próximamente conocerás más sobre AeroTech Avionics.</p>
-            </main>
-          }
-        />
+        <Route path="/nosotros" element={<Nosotros />} />
       </Routes>
 
       <Footer />
