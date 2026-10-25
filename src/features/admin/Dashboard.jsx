@@ -35,9 +35,9 @@ function Dashboard() {
                 Consulta y administra proyectos de aviónica.
               </p>
 
-              <button className="btn btn-secondary" disabled>
-                Próximamente
-              </button>
+              <Link to="/admin/proyectos" className="btn btn-primary">
+  Ver proyectos
+</Link>
             </div>
           </div>
         </div>
