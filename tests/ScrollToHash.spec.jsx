@@ -2,6 +2,7 @@
 import React, { act } from 'react'
 import { createRoot } from 'react-dom/client'
 import { MemoryRouter } from 'react-router'
+import { vi } from 'vitest'
 
 import ScrollToHash from '../src/components/ScrollToHash'
 
@@ -18,7 +19,7 @@ describe('ScrollToHash - AeroTech Avionics', function () {
 
     root = createRoot(contenedor)
 
-    spyOn(window, 'scrollTo').and.stub()
+    vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
   })
 
   afterEach(function () {
@@ -32,6 +33,8 @@ describe('ScrollToHash - AeroTech Avionics', function () {
       seccion.remove()
       seccion = null
     }
+
+    vi.restoreAllMocks()
   })
 
   function renderizar(ruta) {
@@ -53,20 +56,18 @@ describe('ScrollToHash - AeroTech Avionics', function () {
   it('debe desplazarse hasta la sección servicios', async function () {
     seccion = document.createElement('section')
     seccion.id = 'servicios'
-
     document.body.appendChild(seccion)
 
-    const desplazar = spyOn(seccion, 'scrollIntoView').and.stub()
+    const desplazar = vi.fn()
+    seccion.scrollIntoView = desplazar
 
     renderizar('/#servicios')
 
-    await new Promise((resolver) => {
-      window.setTimeout(resolver, 100)
-    })
-
-    expect(desplazar).toHaveBeenCalledWith({
-      behavior: 'smooth',
-      block: 'start'
+    await vi.waitFor(() => {
+      expect(desplazar).toHaveBeenCalledWith({
+        behavior: 'smooth',
+        block: 'start'
+      })
     })
   })
 
