@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router'
+
 import {
   Building2,
   Wrench,
@@ -22,7 +23,7 @@ function Navbar() {
     { nombre: 'SERVICIOS', ruta: '/#servicios', Icono: Wrench },
     { nombre: 'TECNOLOGIAS', ruta: '/#tecnologias', Icono: Cpu },
     { nombre: 'PROYECTOS', ruta: '/#proyectos', Icono: FolderKanban },
-    { nombre: 'CONTACTO', ruta: '/#contacto', Icono: Mail },
+    { nombre: 'CONTACTO', ruta: '/contacto', Icono: Mail },
     { nombre: 'ACCESO', ruta: '/#acceso', Icono: UserRound }
   ]
 

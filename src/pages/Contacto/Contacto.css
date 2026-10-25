@@ -1,0 +1,253 @@
+
+/* =========================================
+   CONTACTO - AEROTECH AVIONICS
+========================================= */
+
+.pagina-contacto {
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+/* Portada */
+
+.contacto-hero {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  padding: 85px 0;
+  text-align: center;
+  color: #ffffff;
+}
+
+.contacto-etiqueta,
+.contacto-subtitulo {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.contacto-hero h1 {
+  max-width: 1000px;
+  margin: 22px auto;
+  font-size: clamp(2.3rem, 4vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.contacto-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Contenido */
+
+.contacto-contenido {
+  padding: 90px 0;
+}
+
+/* Información izquierda */
+
+.contacto-informacion {
+  padding-top: 20px;
+}
+
+.contacto-subtitulo {
+  color: #0284c7;
+}
+
+.contacto-informacion h2 {
+  margin: 20px 0;
+  color: var(--color-primary);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.contacto-informacion > p {
+  color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.contacto-beneficio {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+  margin-bottom: 28px;
+}
+
+.contacto-beneficio > svg {
+  color: #0284c7;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.contacto-beneficio h3 {
+  color: var(--color-primary);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.contacto-beneficio p {
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Formulario */
+
+.contacto-formulario {
+  padding: 40px;
+  background-color: #ffffff;
+  border: 1px solid #dce4ec;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(20, 38, 61, 0.08);
+}
+
+.contacto-formulario-encabezado {
+  margin-bottom: 30px;
+}
+
+.contacto-formulario-encabezado > svg {
+  color: #0284c7;
+  margin-bottom: 16px;
+}
+
+.contacto-formulario-encabezado h2 {
+  color: var(--color-primary);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.contacto-formulario-encabezado p {
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.contacto-formulario .form-label {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.contacto-formulario .form-control,
+.contacto-formulario .form-select {
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  color: var(--color-text);
+}
+
+.contacto-formulario .form-control:focus,
+.contacto-formulario .form-select:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+.contacto-formulario textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* Botón */
+
+.contacto-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin-top: 28px;
+  padding: 13px 24px;
+
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 7px;
+
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.contacto-boton:hover {
+  background-color: var(--color-secondary);
+}
+
+.contacto-boton:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.contacto-aviso {
+  margin-top: 18px;
+  padding: 14px 16px;
+  color: #7c2d12;
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Tablets */
+
+@media (max-width: 991.98px) {
+  .contacto-hero {
+    padding: 70px 0;
+  }
+
+  .contacto-contenido {
+    padding: 65px 0;
+  }
+
+  .contacto-informacion {
+    padding-top: 0;
+  }
+}
+
+/* Celulares */
+
+@media (max-width: 575.98px) {
+  .contacto-hero {
+    padding: 55px 0;
+  }
+
+  .contacto-hero h1 {
+    font-size: 2rem;
+  }
+
+  .contacto-hero p {
+    font-size: 1rem;
+  }
+
+  .contacto-contenido {
+    padding: 45px 0;
+  }
+
+  .contacto-formulario {
+    padding: 25px 20px;
+  }
+
+  .contacto-boton {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contacto-boton {
+    transition: none;
+  }
+}
