@@ -30,3 +30,4 @@ dist-ssr
 
 
 tests/*.bundle.js
+/tests/bundles/
