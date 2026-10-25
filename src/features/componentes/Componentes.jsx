@@ -2,11 +2,13 @@
 import { useState } from 'react'
 
 import {
-  validarNombreComponente,
-  validarCategoriaComponente
-} from './validaciones'
+  agregarComponente,
+  actualizarComponente,
+  eliminarComponente,
+  filtrarComponentes
+} from './operaciones'
 
-// Datos iniciales de ejemplo
+// Componentes iniciales
 const componentesIniciales = [
   {
     id: 1,
@@ -29,7 +31,6 @@ const componentesIniciales = [
 ]
 
 function Componentes() {
-  // Lista de componentes
   const [componentes, setComponentes] = useState(componentesIniciales)
 
   // Formulario
@@ -42,27 +43,18 @@ function Componentes() {
   const [idEnEdicion, setIdEnEdicion] = useState(null)
   const [componenteAEliminar, setComponenteAEliminar] = useState(null)
 
-  // NUEVO: estados del buscador y filtros
+  // Buscador y filtros
   const [busqueda, setBusqueda] = useState('')
   const [filtroCategoria, setFiltroCategoria] = useState('Todas')
   const [filtroEstado, setFiltroEstado] = useState('Todos')
 
-  // NUEVO: calcular los componentes visibles
-  const componentesFiltrados = componentes.filter((componente) => {
-    const coincideNombre = componente.nombre
-      .toLocaleLowerCase('es')
-      .includes(busqueda.trim().toLocaleLowerCase('es'))
-
-    const coincideCategoria =
-      filtroCategoria === 'Todas' ||
-      componente.categoria === filtroCategoria
-
-    const coincideEstado =
-      filtroEstado === 'Todos' ||
-      componente.estado === filtroEstado
-
-    return coincideNombre && coincideCategoria && coincideEstado
-  })
+  // Usamos la función probada con Vitest
+  const componentesFiltrados = filtrarComponentes(
+    componentes,
+    busqueda,
+    filtroCategoria,
+    filtroEstado
+  )
 
   function limpiarFormulario() {
     setNombre('')
@@ -88,50 +80,36 @@ function Componentes() {
   function guardarComponente(evento) {
     evento.preventDefault()
 
-    const errorNombre = validarNombreComponente(nombre)
-
-    if (errorNombre) {
-      setError(errorNombre)
-      return
+    const datos = {
+      nombre,
+      categoria,
+      estado,
     }
-
-    const errorCategoria = validarCategoriaComponente(categoria)
-
-    if (errorCategoria) {
-      setError(errorCategoria)
-      return
-    }
-
-    const nombreLimpio = nombre.trim()
 
     if (idEnEdicion !== null) {
-      // UPDATE
-      setComponentes((anteriores) =>
-        anteriores.map((componente) =>
-          componente.id === idEnEdicion
-            ? {
-                ...componente,
-                nombre: nombreLimpio,
-                categoria,
-                estado,
-              }
-            : componente
-        )
+      // UPDATE: utilizar la función probada
+      const resultado = actualizarComponente(
+        componentes,
+        idEnEdicion,
+        datos
       )
-    } else {
-      // CREATE
-      const nuevoId =
-        Math.max(0, ...componentes.map((componente) => componente.id)) + 1
 
-      setComponentes((anteriores) => [
-        ...anteriores,
-        {
-          id: nuevoId,
-          nombre: nombreLimpio,
-          categoria,
-          estado,
-        },
-      ])
+      if (resultado.error) {
+        setError(resultado.error)
+        return
+      }
+
+      setComponentes(resultado.componentes)
+    } else {
+      // CREATE: utilizar la función probada
+      const resultado = agregarComponente(componentes, datos)
+
+      if (resultado.error) {
+        setError(resultado.error)
+        return
+      }
+
+      setComponentes(resultado.componentes)
     }
 
     limpiarFormulario()
@@ -146,9 +124,9 @@ function Componentes() {
 
     const idEliminar = componenteAEliminar.id
 
-    // DELETE
+    // DELETE: utilizar la función probada
     setComponentes((anteriores) =>
-      anteriores.filter((componente) => componente.id !== idEliminar)
+      eliminarComponente(anteriores, idEliminar)
     )
 
     if (idEnEdicion === idEliminar) {
@@ -265,7 +243,7 @@ function Componentes() {
         </div>
       </section>
 
-      {/* NUEVO: Buscador y filtros */}
+      {/* Buscador y filtros */}
       <section className="card mb-4" aria-label="Filtros de componentes">
         <div className="card-body">
           <h2 className="h4 mb-3">Buscar y filtrar componentes</h2>
@@ -353,6 +331,7 @@ function Componentes() {
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
+
             <tbody>
               {componentesFiltrados.map((componente) => (
                 <tr key={componente.id}>
