@@ -1,4 +1,5 @@
 
+import Dashboard from './features/admin/Dashboard'
 import { Routes, Route } from 'react-router'
 
 import Navbar from './components/layout/Navbar'
@@ -21,6 +22,7 @@ function App() {
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/clientes" element={<Clientes />} />
+        <Route path="/admin" element={<Dashboard />} />
       </Routes>
 
       <Footer />

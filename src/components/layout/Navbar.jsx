@@ -24,7 +24,7 @@ function Navbar() {
     { nombre: 'TECNOLOGIAS', ruta: '/#tecnologias', Icono: Cpu },
     { nombre: 'PROYECTOS', ruta: '/#proyectos', Icono: FolderKanban },
     { nombre: 'CONTACTO', ruta: '/contacto', Icono: Mail },
-    { nombre: 'ACCESO', ruta: '/clientes', Icono: UserRound },
+    { nombre: 'ACCESO', ruta: '/admin', Icono: UserRound },
   ]
 
   return (
