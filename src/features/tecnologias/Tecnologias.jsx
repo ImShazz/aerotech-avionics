@@ -1,3 +1,4 @@
+import './Tecnologias.css'
 
 const tecnologias = [
   {
@@ -22,7 +23,7 @@ const tecnologias = [
 
 function Tecnologias() {
   return (
-    <main className="container py-5">
+    <main className="container py-5 tecnologias-page">
       <header className="mb-5">
         <h1>Tecnologías de aviónica</h1>
         <p className="text-secondary">
@@ -33,7 +34,7 @@ function Tecnologias() {
       <section className="row g-4" aria-label="Catálogo de tecnologías">
         {tecnologias.map((tecnologia) => (
           <div className="col-12 col-md-6 col-lg-4" key={tecnologia.id}>
-            <article className="card h-100 shadow-sm">
+            <article className="card h-100 tecnologia-card">
               <div className="card-body">
                 <h2 className="card-title h5">{tecnologia.nombre}</h2>
                 <p className="card-text">{tecnologia.descripcion}</p>

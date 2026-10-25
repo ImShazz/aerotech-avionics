@@ -1,0 +1,45 @@
+
+/* Estilos del catálogo público de tecnologías */
+
+.tecnologias-page {
+  color: var(--color-text);
+}
+
+.tecnologias-page h1 {
+  color: var(--color-primary);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.tecnologias-page .tecnologia-card {
+  border: 1px solid #dee4ea;
+  border-radius: 12px;
+  border-top: 4px solid var(--color-accent);
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tecnologias-page .tecnologia-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(20, 38, 61, 0.12);
+}
+
+.tecnologias-page .card-title {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.tecnologias-page .card-text {
+  color: var(--color-secondary);
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tecnologias-page .tecnologia-card {
+    transition: none;
+  }
+
+  .tecnologias-page .tecnologia-card:hover {
+    transform: none;
+  }
+}
