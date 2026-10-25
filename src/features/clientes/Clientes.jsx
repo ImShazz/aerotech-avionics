@@ -226,6 +226,25 @@ const guardarCliente = () => {
 >
   Editar
 </button>
+<button
+  type="button"
+  className="btn btn-danger btn-sm ms-2"
+  onClick={() => {
+    const confirmar = window.confirm(
+      `¿Seguro que deseas eliminar a ${cliente.empresa}?`
+    );
+
+    if (confirmar) {
+      setClientes((clientesActuales) =>
+        clientesActuales.filter(
+          (clienteActual) => clienteActual.id !== cliente.id
+        )
+      );
+    }
+  }}
+>
+  Eliminar
+</button>
 </td>
     </tr>
   ))}
