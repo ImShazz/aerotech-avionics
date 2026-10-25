@@ -32,4 +32,22 @@ describe('Panel de Administración', () => {
       })
     ).toBeInTheDocument();
   });
+
+    it('muestra el acceso a gestion de proyectos', () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+
+    const enlaceProyectos = screen.getByRole('link', {
+      name: /ver proyectos/i,
+    });
+
+    expect(enlaceProyectos).toBeInTheDocument();
+    expect(enlaceProyectos).toHaveAttribute(
+      'href',
+      '/admin/proyectos'
+    );
+  });
 });
