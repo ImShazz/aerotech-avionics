@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Clientes.css';
 const clientesIniciales = [
   {
@@ -18,7 +18,17 @@ const clientesIniciales = [
 ];
 function Clientes() {
   const [busqueda, setBusqueda] = useState('');
-  const [clientes, setClientes] = useState(clientesIniciales);
+  const [clientes, setClientes] = useState(() => {
+  try {
+    const clientesGuardados = localStorage.getItem('aerotech-clientes');
+
+    return clientesGuardados
+      ? JSON.parse(clientesGuardados)
+      : clientesIniciales;
+  } catch {
+    return clientesIniciales;
+  }
+});
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [clienteEditando, setClienteEditando] = useState(null);
   const [nuevoCliente, setNuevoCliente] = useState({
@@ -26,6 +36,10 @@ function Clientes() {
   contacto: '',
   correo: '',
 });
+
+useEffect(() => {
+  localStorage.setItem('aerotech-clientes', JSON.stringify(clientes));
+}, [clientes]);
 
   const clientesFiltrados = clientes.filter((cliente) =>
   cliente.empresa.toLowerCase().includes(busqueda.toLowerCase())
