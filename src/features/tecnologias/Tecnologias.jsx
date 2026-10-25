@@ -84,35 +84,41 @@ const tecnologias = [
   },
 ]
 
-// Componente principal de la página Tecnologías
+// Componente principal de la página
 function Tecnologias() {
+
+  // Estado del buscador
   const [busqueda, setBusqueda] = useState('')
 
-  // Normalizamos el texto para facilitar la búsqueda
+  // Estado del filtro por categoría
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todas')
+
+  // Normalizar el texto de búsqueda
   const textoBusqueda = busqueda.toLocaleLowerCase('es').trim()
 
-  // Filtramos las tecnologías por nombre, categoría o descripción
+  // Filtrar por búsqueda y categoría
   const tecnologiasFiltradas = tecnologias.filter((tecnologia) => {
-    return (
-      tecnologia.nombre
-        .toLocaleLowerCase('es')
-        .includes(textoBusqueda) ||
-      tecnologia.categoria
-        .toLocaleLowerCase('es')
-        .includes(textoBusqueda) ||
-      tecnologia.descripcion
-        .toLocaleLowerCase('es')
-        .includes(textoBusqueda)
-    )
+
+    const coincideBusqueda =
+      tecnologia.nombre.toLocaleLowerCase('es').includes(textoBusqueda) ||
+      tecnologia.categoria.toLocaleLowerCase('es').includes(textoBusqueda) ||
+      tecnologia.descripcion.toLocaleLowerCase('es').includes(textoBusqueda)
+
+    const coincideCategoria =
+      categoriaSeleccionada === 'Todas' ||
+      tecnologia.categoria === categoriaSeleccionada
+
+    return coincideBusqueda && coincideCategoria
   })
 
   return (
     <main className="tecnologias-page">
 
-      {/* Sección principal con imagen de portada */}
+      {/* Imagen principal */}
       <section className="tecnologias-hero">
         <div className="container tecnologias-hero-content">
           <div className="tecnologias-hero-texto">
+
             <span className="tecnologias-etiqueta">
               Soluciones aeronáuticas
             </span>
@@ -125,15 +131,17 @@ function Tecnologias() {
               la comunicación, la instrumentación digital
               y los sistemas aeronáuticos de defensa.
             </p>
+
           </div>
         </div>
       </section>
 
-      {/* Catálogo público de tecnologías */}
+      {/* Catálogo de tecnologías */}
       <section className="container py-5">
 
         {/* Buscador */}
-        <div className="tecnologias-buscador mb-5">
+        <div className="tecnologias-buscador mb-4">
+
           <label
             htmlFor="buscar-tecnologia"
             className="form-label"
@@ -149,22 +157,58 @@ function Tecnologias() {
             value={busqueda}
             onChange={(evento) => setBusqueda(evento.target.value)}
           />
+
         </div>
 
-        {/* Tarjetas de tecnologías */}
+        {/* Nuevo filtro por categoría */}
+        <div className="mb-4">
+
+          <label
+            htmlFor="filtro-categoria"
+            className="form-label"
+          >
+            Filtrar por categoría
+          </label>
+
+          <select
+            id="filtro-categoria"
+            className="form-select"
+            value={categoriaSeleccionada}
+            onChange={(evento) =>
+              setCategoriaSeleccionada(evento.target.value)
+            }
+          >
+            <option value="Todas">
+              Todas las tecnologías
+            </option>
+            <option value="Navegación">Navegación</option>
+            <option value="Comunicaciones">Comunicaciones</option>
+            <option value="Instrumentación">Instrumentación</option>
+            <option value="UAV">UAV</option>
+            <option value="Conectividad">Conectividad</option>
+            <option value="Defensa">Defensa</option>
+          </select>
+
+        </div>
+
+        {/* Resultado del filtrado */}
         {tecnologiasFiltradas.length > 0 ? (
+
           <div
             className="row g-4"
             aria-label="Catálogo de tecnologías"
           >
+
             {tecnologiasFiltradas.map((tecnologia) => (
+
               <div
                 className="col-12 col-md-6 col-lg-4"
                 key={tecnologia.id}
               >
+
                 <article className="card h-100 tecnologia-card">
 
-                  {/* Imagen de la tecnología */}
+                  {/* Imagen */}
                   <img
                     src={tecnologia.imagen}
                     alt={tecnologia.nombre}
@@ -205,16 +249,18 @@ function Tecnologias() {
                   </div>
                 </article>
               </div>
+
             ))}
           </div>
+
         ) : (
 
-          /* Mensaje cuando no existen coincidencias */
           <p role="status" className="text-secondary">
-            No se encontraron tecnologías con ese criterio de búsqueda.
+            No se encontraron tecnologías con los filtros seleccionados.
           </p>
 
         )}
+
       </section>
     </main>
   )
