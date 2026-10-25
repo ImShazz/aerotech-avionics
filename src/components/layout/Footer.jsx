@@ -59,7 +59,7 @@ function Footer() {
         <div className="footer-inferior">
           <p>
             © {new Date().getFullYear()} AeroTech Avionics.
-            Proyecto académico ficticio — Fullstack II.
+            Todos los derechos reservados.
           </p>
         </div>
       </div>

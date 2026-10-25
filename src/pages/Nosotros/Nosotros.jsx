@@ -26,7 +26,7 @@ function Nosotros() {
                 <h1 id="titulo-nosotros">QUIÉNES SOMOS</h1>
 
                 <p>
-                  AeroTech Avionics es una empresa ficticia
+                  AeroTech Avionics es una empresa
                   especializada en ingeniería, integración
                   y modernización de sistemas electrónicos
                   aeronáuticos.
