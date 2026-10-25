@@ -1,5 +1,7 @@
 
+import { Link } from 'react-router'
 import { ArrowRight, ShieldCheck, Cpu } from 'lucide-react'
+
 import './SobreAerotech.css'
 
 function SobreAerotech() {
@@ -12,7 +14,7 @@ function SobreAerotech() {
             <div className="sobre-aerotech-imagen">
               <img
                 src="/images/sobre-aerotech.jpg"
-                alt="Aeronave en instalaciones de mantenimiento"
+                alt="Panel de instrumentos electrónicos de una aeronave"
               />
             </div>
           </div>
@@ -50,10 +52,10 @@ function SobreAerotech() {
                 </div>
               </div>
 
-              <a href="#nosotros" className="sobre-aerotech-enlace">
+              <Link to="/nosotros" className="sobre-aerotech-enlace">
                 CONOCE NUESTRA EMPRESA
                 <ArrowRight size={18} />
-              </a>
+              </Link>
 
             </div>
           </div>

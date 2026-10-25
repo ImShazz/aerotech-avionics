@@ -1,0 +1,211 @@
+
+/* =========================================
+   NOSOTROS - AEROTECH AVIONICS
+========================================= */
+
+.pagina-nosotros {
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+/* =========================================
+   FOTOGRAFÍA PRINCIPAL
+========================================= */
+
+.nosotros-contenido {
+  min-height: 850px;
+  padding: 75px 0;
+
+  display: flex;
+  align-items: center;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(9, 22, 35, 0.65) 0%,
+      rgba(9, 22, 35, 0.20) 55%,
+      rgba(9, 22, 35, 0.05) 100%
+    ),
+    url('/images/nosotros-fondo.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================================
+   PANEL QUIÉNES SOMOS
+========================================= */
+
+.nosotros-panel {
+  background-color: rgba(20, 38, 61, 0.83);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 14px;
+  padding: 38px;
+
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+}
+
+.nosotros-panel > svg {
+  color: var(--color-accent);
+  margin-bottom: 18px;
+}
+
+.nosotros-panel h1 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  margin-bottom: 22px;
+}
+
+.nosotros-panel > p {
+  color: #e2e8f0;
+  line-height: 1.8;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+/* =========================================
+   SEPARADOR
+========================================= */
+
+.nosotros-panel-separador {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.18);
+  margin: 28px 0;
+}
+
+/* =========================================
+   MISIÓN Y VISIÓN
+========================================= */
+
+.nosotros-panel-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.nosotros-panel-item:last-child {
+  margin-bottom: 0;
+}
+
+.nosotros-panel-item > svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.nosotros-panel-item h2 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.nosotros-panel-item p {
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* =========================================
+   NUESTROS VALORES
+========================================= */
+
+.nosotros-valores-tarjeta {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+
+  margin-top: 22px;
+  padding: 26px 30px;
+
+  background-color: rgba(20, 38, 61, 0.83);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 14px;
+
+  color: #ffffff;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.20);
+}
+
+.nosotros-valores-tarjeta > svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.nosotros-valores-tarjeta h2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.nosotros-valores-tarjeta p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* =========================================
+   TABLETS
+========================================= */
+
+@media (max-width: 991.98px) {
+  .nosotros-contenido {
+    min-height: 750px;
+    padding: 60px 0;
+    background-position: 60% center;
+  }
+
+  .nosotros-panel,
+  .nosotros-valores-tarjeta {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* =========================================
+   CELULARES
+========================================= */
+
+@media (max-width: 575.98px) {
+  .nosotros-contenido {
+    min-height: auto;
+    padding: 45px 0;
+    background-position: 65% center;
+  }
+
+  .nosotros-panel {
+    padding: 30px 22px;
+  }
+
+  .nosotros-valores-tarjeta {
+    padding: 24px 20px;
+    gap: 14px;
+  }
+}
+
+/* =========================================
+   ACCESIBILIDAD
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .nosotros-panel,
+  .nosotros-valores-tarjeta {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
