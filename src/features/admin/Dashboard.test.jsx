@@ -18,4 +18,18 @@ describe('Panel de Administración', () => {
       })
     ).toBeInTheDocument();
   });
+
+    it('muestra el acceso a gestion de clientes', () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+
+    expect(
+      screen.getByRole('link', {
+        name: /ver clientes/i,
+      })
+    ).toBeInTheDocument();
+  });
 });
