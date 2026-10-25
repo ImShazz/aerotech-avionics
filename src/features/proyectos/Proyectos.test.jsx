@@ -13,6 +13,29 @@ describe('Gestión de Proyectos', () => {
       })
     ).toBeInTheDocument();
   });
+    it('cierra el formulario al presionar Cancelar', () => {
+    render(<Proyectos />);
+
+    const botonNuevo = screen.getByRole('button', {
+      name: /nuevo proyecto/i,
+    });
+
+    fireEvent.click(botonNuevo);
+
+    expect(
+      screen.getByText(/registrar nuevo proyecto/i)
+    ).toBeInTheDocument();
+
+    const botonCancelar = screen.getByRole('button', {
+      name: /cancelar/i,
+    });
+
+    fireEvent.click(botonCancelar);
+
+    expect(
+      screen.queryByText(/registrar nuevo proyecto/i)
+    ).not.toBeInTheDocument();
+  });
   it('abre el formulario al presionar Nuevo proyecto', () => {
   render(<Proyectos />);
 
