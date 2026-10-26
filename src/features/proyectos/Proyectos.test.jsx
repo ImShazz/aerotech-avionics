@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import '@testing-library/jest-dom/vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Proyectos from './Proyectos';
@@ -13,6 +13,40 @@ describe('Gestión de Proyectos', () => {
       })
     ).toBeInTheDocument();
   });
+
+    it('muestra los proyectos registrados en la tabla', () => {
+    const proyectosPrueba = [
+      {
+        id: 999,
+        nombre: 'Modernización de aviónica',
+        cliente: 'AeroSur Ingeniería',
+        estado: 'En ejecución',
+      },
+    ];
+
+    const obtenerDatosOriginal = Storage.prototype.getItem;
+
+    const almacenamientoSimulado = vi
+      .spyOn(Storage.prototype, 'getItem')
+      .mockImplementation(function (clave) {
+        if (clave === 'aerotech-proyectos') {
+          return JSON.stringify(proyectosPrueba);
+        }
+
+        return obtenerDatosOriginal.call(this, clave);
+      });
+
+    try {
+      render(<Proyectos />);
+
+      expect(
+        screen.getByText('Modernización de aviónica')
+      ).toBeInTheDocument();
+    } finally {
+      almacenamientoSimulado.mockRestore();
+    }
+  });
+
     it('cierra el formulario al presionar Cancelar', () => {
     render(<Proyectos />);
 
