@@ -14,6 +14,54 @@ describe('Gestión de Proyectos', () => {
     ).toBeInTheDocument();
   });
 
+    it('elimina un proyecto registrado al confirmar', () => {
+    const proyectosPrueba = [
+      {
+        id: 999,
+        nombre: 'Proyecto para eliminar Vitest',
+        cliente: 'AeroSur Ingeniería',
+        estado: 'Planificación',
+      },
+    ];
+
+    const obtenerDatosOriginal = Storage.prototype.getItem;
+
+    const almacenamientoSimulado = vi
+      .spyOn(Storage.prototype, 'getItem')
+      .mockImplementation(function (clave) {
+        if (clave === 'aerotech-proyectos') {
+          return JSON.stringify(proyectosPrueba);
+        }
+
+        return obtenerDatosOriginal.call(this, clave);
+      });
+
+    const confirmacionSimulada = vi
+      .spyOn(window, 'confirm')
+      .mockReturnValue(true);
+
+    try {
+      render(<Proyectos />);
+
+      expect(
+        screen.getByText('Proyecto para eliminar Vitest')
+      ).toBeInTheDocument();
+
+      fireEvent.click(
+        screen.getByRole('button', { name: /eliminar/i })
+      );
+
+      expect(confirmacionSimulada).toHaveBeenCalled();
+
+      expect(
+        screen.queryByText('Proyecto para eliminar Vitest')
+      ).not.toBeInTheDocument();
+    } finally {
+      almacenamientoSimulado.mockRestore();
+      confirmacionSimulada.mockRestore();
+    }
+  });
+
    it('registra un nuevo proyecto y lo muestra en la tabla', () => {
   const clientesPrueba = [
     {
