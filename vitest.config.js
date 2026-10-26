@@ -9,15 +9,13 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
 
+    setupFiles: ['./src/setupTests.js'],
+
     include: [
-  'tests/ServiciosDestacados.spec.jsx',
-  'tests/Navbar.spec.jsx',
-  'tests/Nosotros.spec.jsx',
-  'tests/Contacto.spec.jsx',
-  'tests/ScrollToHash.spec.jsx',
-  'src/features/admin/Dashboard.test.jsx',
-  'src/features/proyectos/Proyectos.test.jsx'
-],
+      'tests/**/*.spec.jsx',
+      'src/features/**/*.test.js',
+      'src/features/**/*.test.jsx'
+    ],
 
     clearMocks: true,
     restoreMocks: true
