@@ -1,0 +1,20 @@
+/* Estilos exclusivos del módulo de clientes */
+
+.clientes-page {
+  color: var(--color-text, #1e293b);
+}
+
+.clientes-page h1 {
+  color: var(--color-primary, #14263d);
+  font-weight: 700;
+}
+
+.clientes-page .clientes-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.clientes-page .clientes-card h2 {
+  color: var(--color-secondary, #243b53);
+}
