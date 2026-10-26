@@ -1,49 +1,74 @@
-import { Link } from 'react-router';
+
+import { Link } from 'react-router'
+import { Building2, FolderKanban, ArrowUpRight } from 'lucide-react'
+
+import './Dashboard.css'
 
 function Dashboard() {
   return (
-    <section className="container py-5">
-      <h1>Panel de Administración</h1>
+    <main className="dashboard-page">
+      <div className="container dashboard-contenido">
 
-      <p className="text-secondary">
-        Sistema interno de gestión de AeroTech Avionics.
-      </p>
+        <div className="dashboard-encabezado">
+          <span className="dashboard-etiqueta">
+            AEROTECH AVIONICS / SISTEMA INTERNO
+          </span>
 
-      <div className="row g-4 mt-3">
-        <div className="col-md-6">
-          <div className="card shadow-sm h-100">
-            <div className="card-body">
-              <h2 className="h5">Gestión de Clientes</h2>
+          <h1>Panel de Administración</h1>
+
+          <p>
+            Gestión centralizada de operaciones y proyectos aeronáuticos.
+          </p>
+        </div>
+
+        <div className="row g-4">
+          <div className="col-12 col-md-6">
+            <article className="dashboard-tarjeta">
+              <div className="dashboard-icono">
+                <Building2 size={28} strokeWidth={1.6} />
+              </div>
+
+              <h2>Gestión de Clientes</h2>
 
               <p>
-                Administra las empresas clientes registradas.
+                Administra las empresas clientes registradas
+                y su información corporativa.
               </p>
 
-              <Link to="/clientes" className="btn btn-primary">
+              <Link to="/clientes" className="dashboard-enlace">
                 Ver clientes
+                <ArrowUpRight size={18} />
               </Link>
-            </div>
+            </article>
           </div>
-        </div>
 
-        <div className="col-md-6">
-          <div className="card shadow-sm h-100">
-            <div className="card-body">
-              <h2 className="h5">Gestión de Proyectos</h2>
+          <div className="col-12 col-md-6">
+            <article className="dashboard-tarjeta">
+              <div className="dashboard-icono">
+                <FolderKanban size={28} strokeWidth={1.6} />
+              </div>
+
+              <h2>Gestión de Proyectos</h2>
 
               <p>
-                Consulta y administra proyectos de aviónica.
+                Consulta y administra los proyectos
+                de ingeniería y aviónica.
               </p>
 
-              <Link to="/admin/proyectos" className="btn btn-primary">
-  Ver proyectos
-</Link>
-            </div>
+              <Link
+                to="/admin/proyectos"
+                className="dashboard-enlace"
+              >
+                Ver proyectos
+                <ArrowUpRight size={18} />
+              </Link>
+            </article>
           </div>
         </div>
+
       </div>
-    </section>
-  );
+    </main>
+  )
 }
 
-export default Dashboard;
+export default Dashboard
