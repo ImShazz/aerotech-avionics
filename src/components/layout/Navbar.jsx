@@ -6,7 +6,7 @@ import {
   Building2,
   Wrench,
   Cpu,
-  FolderKanban,
+  Boxes,
   Mail,
   UserRound
 } from 'lucide-react'
@@ -21,8 +21,8 @@ function Navbar() {
   const enlaces = [
     { nombre: 'NOSOTROS', ruta: '/nosotros', Icono: Building2 },
     { nombre: 'SERVICIOS', ruta: '/#servicios', Icono: Wrench },
-    { nombre: 'TECNOLOGIAS', ruta: '/#tecnologias', Icono: Cpu },
-    { nombre: 'PROYECTOS', ruta: '/#proyectos', Icono: FolderKanban },
+    { nombre: 'TECNOLOGIAS', ruta: '/tecnologias', Icono: Cpu },
+    { nombre: 'COMPONENTES', ruta: '/admin/componentes', Icono: Boxes },
     { nombre: 'CONTACTO', ruta: '/contacto', Icono: Mail },
     { nombre: 'ACCESO', ruta: '/admin', Icono: UserRound },
   ]
