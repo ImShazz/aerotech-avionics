@@ -14,6 +14,59 @@ describe('Gestión de Proyectos', () => {
     ).toBeInTheDocument();
   });
 
+   it('registra un nuevo proyecto y lo muestra en la tabla', () => {
+  const clientesPrueba = [
+    {
+      id: 999,
+      empresa: 'AeroSur Ingeniería',
+    },
+  ];
+
+  const obtenerDatosOriginal = Storage.prototype.getItem;
+
+  const almacenamientoSimulado = vi
+    .spyOn(Storage.prototype, 'getItem')
+    .mockImplementation(function (clave) {
+      if (clave === 'aerotech-clientes') {
+        return JSON.stringify(clientesPrueba);
+      }
+
+      return obtenerDatosOriginal.call(this, clave);
+    });
+
+  try {
+    render(<Proyectos />);
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /nuevo proyecto/i })
+    );
+
+    fireEvent.change(
+      screen.getByLabelText(/nombre del proyecto/i),
+      {
+        target: { value: 'Proyecto de prueba Vitest' },
+      }
+    );
+
+    fireEvent.change(
+      screen.getByLabelText(/empresa cliente/i),
+      {
+        target: { value: 'AeroSur Ingeniería' },
+      }
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /guardar proyecto/i })
+    );
+
+    expect(
+      screen.getByText('Proyecto de prueba Vitest')
+    ).toBeInTheDocument();
+  } finally {
+    almacenamientoSimulado.mockRestore();
+  }
+});
+
     it('permite seleccionar una empresa cliente registrada', () => {
     const clientesPrueba = [
       {
